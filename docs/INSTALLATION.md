@@ -6,34 +6,25 @@
 - **Swift**: 5.5+
 - **Xcode**: 12.0+
 
-## Installation Methods
+## Installation
 
-### Method 1: CocoaPods (Recommended)
+### Swift Package Manager (GitHub)
 
-Add to your `Podfile`:
+#### Option 1: Add in Xcode
 
-```ruby
-pod 'BSICards', '~> 1.0.0'
+1. Open your app project in Xcode
+2. Go to **File -> Add Package Dependencies...**
+3. Enter repository URL: `https://github.com/nash81/bsicards-ios-sdk.git`
+4. Select version rule: **Up to Next Major Version** from `1.0.0`
+5. Add the `BSICards` library to your app target
+
+#### Option 2: Add in Package.swift
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/nash81/bsicards-ios-sdk.git", from: "1.0.0")
+]
 ```
-
-Then run:
-
-```bash
-pod install
-```
-
-### Method 2: Swift Package Manager
-
-1. In Xcode: File → Add Packages
-2. Enter repository URL: `https://github.com/nash81/bsicards-ios-sdk.git`
-3. Select version: Up to Next Major (1.0.0)
-4. Add to your target
-
-### Method 3: Manual Integration
-
-1. Clone the repository
-2. Drag `Sources/BSICards` folder into your Xcode project
-3. Ensure `Copy items if needed` is selected
 
 ## Configuration
 
@@ -148,11 +139,12 @@ struct ContentView: View {
 
 ### "Module not found" Error
 
-1. Ensure framework is added to target:
-   - Target Settings → Build Phases → Link Binary With Libraries
-   - Add BSICards framework
-
-2. Check import statement:
+1. Confirm the package is added to your target:
+   - Target Settings -> General -> Frameworks, Libraries, and Embedded Content
+   - Verify `BSICards` appears in the linked dependencies
+2. In Xcode, use **File -> Packages -> Resolve Package Versions**
+3. Clean and rebuild the project
+4. Confirm import statement:
    ```swift
    import BSICards
    ```
@@ -192,4 +184,3 @@ Ensure your `Info.plist` doesn't have strict policies:
 - Email: cs@bsigroup.tech
 - Website: https://www.bsigroup.tech
 - GitHub: https://github.com/nash81/bsicards-ios-sdk
-

@@ -5,7 +5,6 @@ A comprehensive Swift SDK for integrating with the BSICARDS Card Issuance API. C
 [![iOS](https://img.shields.io/badge/iOS-13.0+-brightgreen)](https://www.apple.com/ios/)
 [![Swift](https://img.shields.io/badge/swift-5.5+-orange)](https://swift.org/)
 [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
-[![CocoaPods](https://img.shields.io/badge/cocoapods-available-brightgreen)](https://cocoapods.org/)
 
 ## Features
 
@@ -29,33 +28,23 @@ A comprehensive Swift SDK for integrating with the BSICARDS Card Issuance API. C
 
 ## Installation
 
-### Via CocoaPods
+### Swift Package Manager (GitHub)
 
-```ruby
-pod 'BSICards', '~> 1.0.0'
-```
+#### Xcode
 
-Then run:
+1. In Xcode, go to **File -> Add Package Dependencies...**
+2. Enter the repository URL:
+   `https://github.com/nash81/bsicards-ios-sdk.git`
+3. Choose **Up to Next Major Version** from `1.0.0`
+4. Add `BSICards` to your app target
 
-```bash
-pod install
-```
-
-### Via Swift Package Manager
-
-Add to your `Package.swift`:
+#### Package.swift
 
 ```swift
 dependencies: [
     .package(url: "https://github.com/nash81/bsicards-ios-sdk.git", from: "1.0.0")
 ]
 ```
-
-### Manual Installation
-
-1. Clone the repository
-2. Add `BSICards.xcodeproj` to your Xcode project
-3. Link against the `BSICards` framework
 
 ## Configuration
 
@@ -367,4 +356,3 @@ See [CHANGELOG.md](CHANGELOG.md) for version history.
 ## Disclaimer
 
 This SDK is provided as-is. Always test in a sandbox environment before production use.
-

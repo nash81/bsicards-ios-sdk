@@ -13,7 +13,6 @@ All notable changes to the BSICARDS iOS SDK will be documented in this file.
 - Async/await support for modern Swift concurrency
 - Full Swift type safety with Codable models
 - Comprehensive error handling
-- CocoaPods support
 - Swift Package Manager support
 - Complete documentation and examples
 - Unit test framework
@@ -29,4 +28,3 @@ All notable changes to the BSICARDS iOS SDK will be documented in this file.
 ## Versioning
 
 This project follows [Semantic Versioning](https://semver.org/).
-
