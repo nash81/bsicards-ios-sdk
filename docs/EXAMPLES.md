@@ -204,6 +204,54 @@ Task {
 }
 ```
 
+## Digital Visa Wallet Examples
+
+### Create a Digital Visa Wallet Card
+
+```swift
+Task {
+    do {
+        let response = try await client.digitalVisaCreateVirtualCard(
+            userEmail: "user@example.com",
+            firstName: "John",
+            lastName: "Doe"
+        )
+
+        print("Created card ID: \(response.data?.id ?? "N/A")")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+### Manage a Digital Visa Wallet Card
+
+```swift
+Task {
+    do {
+        let cards = try await client.digitalVisaGetAllCards(userEmail: "user@example.com")
+        guard let card = cards.first else { return }
+
+        let details = try await client.digitalVisaGetCard(userEmail: "user@example.com", cardId: card.cardId)
+        print("Card status: \(details.status)")
+
+        _ = try await client.digitalVisaFundCard(
+            userEmail: "user@example.com",
+            cardId: card.cardId,
+            amount: "10.00"
+        )
+
+        let otp = try await client.digitalVisaGetOTP(userEmail: "user@example.com", cardId: card.cardId)
+        print("OTP: \(otp.data?.otp ?? "Unavailable")")
+
+        _ = try await client.digitalVisaFreezeCard(userEmail: "user@example.com", cardId: card.cardId)
+        _ = try await client.digitalVisaUnfreezeCard(userEmail: "user@example.com", cardId: card.cardId)
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
 ## Administrator Examples
 
 ### Get Wallet Balance

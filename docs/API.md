@@ -266,6 +266,69 @@ func digitalRedeemPoints(userEmail: String, cardId: String) async throws -> APIR
 
 ---
 
+## Digital Visa Wallet Operations
+
+### digitalVisaCreateVirtualCard
+
+Create a Digital Visa virtual wallet card.
+
+```swift
+func digitalVisaCreateVirtualCard(
+    userEmail: String,
+    firstName: String,
+    lastName: String
+) async throws -> APIResponse<DigitalVisaCardCreationData>
+```
+
+### digitalVisaGetAllCards
+
+Get all Digital Visa wallet cards for a user.
+
+```swift
+func digitalVisaGetAllCards(userEmail: String) async throws -> [DigitalVisaCardSummary]
+```
+
+### digitalVisaGetCard
+
+Get details for a Digital Visa wallet card.
+
+```swift
+func digitalVisaGetCard(userEmail: String, cardId: String) async throws -> DigitalVisaCardDetails
+```
+
+### digitalVisaFundCard
+
+Fund a Digital Visa wallet card.
+
+```swift
+func digitalVisaFundCard(
+    userEmail: String,
+    cardId: String,
+    amount: String
+) async throws -> APIResponse<MessageResponse>
+```
+
+**Note:** The Postman collection states a minimum funding amount of $5.00.
+
+### digitalVisaGetOTP
+
+Get OTP details for Digital Visa wallet card actions.
+
+```swift
+func digitalVisaGetOTP(userEmail: String, cardId: String) async throws -> APIResponse<DigitalVisaOTPData>
+```
+
+### digitalVisaFreezeCard / digitalVisaUnfreezeCard
+
+Block or unblock a Digital Visa wallet card.
+
+```swift
+func digitalVisaFreezeCard(userEmail: String, cardId: String) async throws -> APIResponse<MessageResponse>
+func digitalVisaUnfreezeCard(userEmail: String, cardId: String) async throws -> APIResponse<MessageResponse>
+```
+
+---
+
 ## Administrator Operations
 
 ### getWalletBalance
@@ -363,6 +426,15 @@ struct Transaction: Codable {
     let status: String
 }
 ```
+
+### Digital Visa Models
+
+Digital Visa wallet endpoints use dedicated models:
+
+- `DigitalVisaCardCreationData`
+- `DigitalVisaCardSummary`
+- `DigitalVisaCardDetails`
+- `DigitalVisaOTPData`
 
 ---
 

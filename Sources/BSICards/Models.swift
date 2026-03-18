@@ -138,6 +138,24 @@ public struct VirtualCardCreationRequest: Codable {
     }
 }
 
+public struct DigitalVisaCardCreationRequest: Codable {
+    public let userEmail: String
+    public let firstName: String
+    public let lastName: String
+
+    enum CodingKeys: String, CodingKey {
+        case userEmail = "useremail"
+        case firstName = "firstname"
+        case lastName = "lastname"
+    }
+
+    public init(userEmail: String, firstName: String, lastName: String) {
+        self.userEmail = userEmail
+        self.firstName = firstName
+        self.lastName = lastName
+    }
+}
+
 public struct FundCardRequest: Codable {
     public let userEmail: String
     public let cardId: String
@@ -189,6 +207,112 @@ public struct CardResponse: Codable {
         case cardId = "cardid"
         case status
         case createdAt = "created_at"
+    }
+}
+
+public struct DigitalVisaCardCreationData: Codable {
+    public let id: String
+    public let cardName: String
+    public let last4Digits: String
+    public let currencyCode: String
+    public let balance: String
+    public let paymentSystem: String
+    public let status: String
+    public let expiresAt: String
+    public let createdAt: String
+}
+
+public struct DigitalVisaCardSummary: Codable {
+    public let cardId: String
+    public let nameOnCard: String
+    public let lastFour: String
+    public let brand: String
+    public let type: String
+
+    enum CodingKeys: String, CodingKey {
+        case cardId = "cardid"
+        case nameOnCard = "nameoncard"
+        case lastFour = "lastfour"
+        case brand
+        case type
+    }
+}
+
+public struct DigitalVisaCardDetails: Codable {
+    public let cardId: String
+    public let nameOnCard: String
+    public let cardNumber: String
+    public let type: String
+    public let brand: String
+    public let status: String
+    public let expiryYear: String
+    public let expiryMonth: String
+    public let cvv: String
+    public let userEmail: String
+    public let balance: String
+    public let isAddon: Int
+    public let transactions: DigitalVisaTransactionsPage?
+
+    enum CodingKeys: String, CodingKey {
+        case cardId = "cardid"
+        case nameOnCard = "nameoncard"
+        case cardNumber = "card_number"
+        case type
+        case brand
+        case status
+        case expiryYear = "expiry_year"
+        case expiryMonth = "expiry_month"
+        case cvv
+        case userEmail = "useremail"
+        case balance
+        case isAddon = "isaddon"
+        case transactions
+    }
+}
+
+public struct DigitalVisaTransactionsPage: Codable {
+    public let data: [DigitalVisaCardTransaction]
+    public let total: Int
+    public let page: Int
+    public let perPage: Int
+    public let totalPages: Int
+
+    enum CodingKeys: String, CodingKey {
+        case data
+        case total
+        case page
+        case perPage = "per_page"
+        case totalPages
+    }
+}
+
+public struct DigitalVisaCardTransaction: Codable {
+    public let transactionId: String?
+    public let amount: String?
+    public let currency: String?
+    public let type: String?
+    public let description: String?
+    public let timestamp: String?
+    public let status: String?
+
+    enum CodingKeys: String, CodingKey {
+        case transactionId = "transaction_id"
+        case amount
+        case currency
+        case type
+        case description
+        case timestamp
+        case status
+    }
+}
+
+public struct DigitalVisaOTPData: Codable {
+    public let otp: String?
+    public let expiresAt: String?
+
+    enum CodingKeys: String, CodingKey {
+        case otp
+        case expiresAt = "expires_at"
     }
 }
 

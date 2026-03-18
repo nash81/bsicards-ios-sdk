@@ -35,6 +35,70 @@ extension BSICardsClient {
         return try await self.request(method: "POST", endpoint: "digitalnewvirtualcard", body: data)
     }
 
+    // MARK: - Digital Visa Wallet Operations
+
+    public func digitalVisaCreateVirtualCard(
+        userEmail: String,
+        firstName: String,
+        lastName: String
+    ) async throws -> APIResponse<DigitalVisaCardCreationData> {
+        let request = DigitalVisaCardCreationRequest(userEmail: userEmail, firstName: firstName, lastName: lastName)
+        let data = try encoder.encode(request)
+
+        return try await self.request(method: "POST", endpoint: "digital-wallet-visa/create-card", body: data)
+    }
+
+    public func digitalVisaGetAllCards(userEmail: String) async throws -> [DigitalVisaCardSummary] {
+        let request = ["useremail": userEmail]
+        let data = try encoder.encode(request)
+
+        let response: APIResponse<[DigitalVisaCardSummary]> = try await self.request(method: "POST", endpoint: "digital-wallet-visa/get-all-cards", body: data)
+        return response.data ?? []
+    }
+
+    public func digitalVisaGetCard(userEmail: String, cardId: String) async throws -> DigitalVisaCardDetails {
+        let request = ["useremail": userEmail, "cardid": cardId]
+        let data = try encoder.encode(request)
+
+        let response: APIResponse<DigitalVisaCardDetails> = try await self.request(method: "POST", endpoint: "digital-wallet-visa/get-card", body: data)
+        guard let card = response.data else {
+            throw BSICardsError.apiError(code: response.code, message: response.message)
+        }
+        return card
+    }
+
+    public func digitalVisaFundCard(
+        userEmail: String,
+        cardId: String,
+        amount: String
+    ) async throws -> APIResponse<MessageResponse> {
+        let request = FundCardRequest(userEmail: userEmail, cardId: cardId, amount: amount)
+        let data = try encoder.encode(request)
+
+        return try await self.request(method: "POST", endpoint: "digital-wallet-visa/fund-card", body: data)
+    }
+
+    public func digitalVisaGetOTP(userEmail: String, cardId: String) async throws -> APIResponse<DigitalVisaOTPData> {
+        let request = ["useremail": userEmail, "cardid": cardId]
+        let data = try encoder.encode(request)
+
+        return try await self.request(method: "POST", endpoint: "digital-wallet-visa/get-otp", body: data)
+    }
+
+    public func digitalVisaFreezeCard(userEmail: String, cardId: String) async throws -> APIResponse<MessageResponse> {
+        let request = ["useremail": userEmail, "cardid": cardId]
+        let data = try encoder.encode(request)
+
+        return try await self.request(method: "POST", endpoint: "digital-wallet-visa/block-card", body: data)
+    }
+
+    public func digitalVisaUnfreezeCard(userEmail: String, cardId: String) async throws -> APIResponse<MessageResponse> {
+        let request = ["useremail": userEmail, "cardid": cardId]
+        let data = try encoder.encode(request)
+
+        return try await self.request(method: "POST", endpoint: "digital-wallet-visa/unblock-card", body: data)
+    }
+
     public func digitalGetAllCards(userEmail: String) async throws -> [Card] {
         let request = ["useremail": userEmail]
         let data = try encoder.encode(request)

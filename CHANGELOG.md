@@ -2,6 +2,13 @@
 
 All notable changes to the BSICARDS iOS SDK will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- Digital Visa Wallet SDK operations for `create-card`, `get-all-cards`, `get-card`, `fund-card`, `get-otp`, `block-card`, and `unblock-card`
+- New Digital Visa Wallet models: `DigitalVisaCardCreationData`, `DigitalVisaCardSummary`, `DigitalVisaCardDetails`, and `DigitalVisaOTPData`
+- API and examples documentation for Digital Visa Wallet flows
+
 ## [1.0.0] - 2026-03-06
 
 ### Added

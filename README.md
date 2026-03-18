@@ -215,6 +215,23 @@ try await client.digitalGetLoyaltyPoints(userEmail:, cardId:)
 try await client.digitalRedeemPoints(userEmail:, cardId:)
 ```
 
+### Digital Visa Wallet Operations
+
+```swift
+// Create Digital Visa wallet card
+try await client.digitalVisaCreateVirtualCard(userEmail:, firstName:, lastName:)
+
+// Get cards and card details
+try await client.digitalVisaGetAllCards(userEmail:)
+try await client.digitalVisaGetCard(userEmail:, cardId:)
+
+// Fund and manage card status
+try await client.digitalVisaFundCard(userEmail:, cardId:, amount:)
+try await client.digitalVisaGetOTP(userEmail:, cardId:)
+try await client.digitalVisaFreezeCard(userEmail:, cardId:)
+try await client.digitalVisaUnfreezeCard(userEmail:, cardId:)
+```
+
 ### Administrator Operations
 
 ```swift
