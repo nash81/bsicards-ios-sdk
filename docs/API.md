@@ -381,6 +381,80 @@ func getAllDigitalCards() async throws -> [Card]
 
 ---
 
+## Wallet As A Service Operations
+
+### Swap
+
+#### getExchangeCurrencies
+
+```swift
+func getExchangeCurrencies() async throws -> [Currency]
+```
+
+#### getExchangeStatus
+
+```swift
+func getExchangeStatus(transactionId: String) async throws -> ExchangeStatus
+```
+
+#### estimateExchange
+
+```swift
+func estimateExchange(from: String, to: String, networkFrom: String, networkTo: String, amount: Double) async throws -> ExchangeEstimate
+```
+
+#### createExchange
+
+```swift
+func createExchange(request: ExchangeCreateRequest) async throws -> ExchangeCreateResponse
+```
+
+### Wallet
+
+#### createWalletAddress
+
+```swift
+func createWalletAddress(userEmail: String, coin: String) async throws -> WalletAddress
+```
+
+#### getAllWalletAddresses
+
+```swift
+func getAllWalletAddresses(userEmail: String) async throws -> [WalletAddress]
+```
+
+#### getWalletAddress
+
+```swift
+func getWalletAddress(uuid: String, userEmail: String) async throws -> WalletAddress
+```
+
+#### getWalletBalance
+
+```swift
+func getWalletBalance(uuid: String, userEmail: String) async throws -> WalletBalance
+```
+
+#### getWithdrawalFee
+
+```swift
+func getWithdrawalFee(request: WithdrawalFeeRequest) async throws -> WithdrawalFee
+```
+
+#### withdraw
+
+```swift
+func withdraw(request: WithdrawRequest) async throws -> WithdrawResponse
+```
+
+#### getWithdrawalStatus
+
+```swift
+func getWithdrawalStatus(txHash: String, coin: String) async throws -> WithdrawalStatus
+```
+
+---
+
 ## Data Models
 
 ### APIResponse<T>

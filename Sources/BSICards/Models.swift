@@ -398,3 +398,87 @@ public struct PointsEntry: Codable {
     }
 }
 
+// MARK: - Wallet As A Service Models
+
+public struct Currency: Codable {
+    public let code: String
+    public let name: String?
+    public let network: String?
+}
+
+public struct ExchangeStatus: Codable {
+    public let transactionId: String
+    public let status: String
+    public let details: String?
+}
+
+public struct ExchangeEstimate: Codable {
+    public let from: String
+    public let to: String
+    public let amount: Double
+    public let estimatedAmount: Double
+    public let rate: Double
+}
+
+public struct ExchangeCreateRequest: Codable {
+    public let coinFrom: String
+    public let coinTo: String
+    public let networkFrom: String
+    public let networkTo: String
+    public let depositAmount: Double
+    public let withdrawal: String
+    public let withdrawalExtraId: String?
+}
+
+public struct ExchangeCreateResponse: Codable {
+    public let transactionId: String
+    public let depositAddress: String
+    public let amount: Double
+    public let status: String
+}
+
+public struct WalletAddress: Codable {
+    public let uuid: String
+    public let address: String
+    public let coin: String
+    public let userEmail: String?
+    public let mnemonic: String?
+    public let privateKey: String?
+}
+
+public struct WalletBalance: Codable {
+    public let balances: [String: String]
+}
+
+public struct WithdrawalFeeRequest: Codable {
+    public let uuid: String
+    public let toAddress: String
+    public let amount: String
+    public let coin: String
+    public let userEmail: String
+}
+
+public struct WithdrawalFee: Codable {
+    public let fee: String
+    public let coin: String
+}
+
+public struct WithdrawRequest: Codable {
+    public let uuid: String
+    public let toAddress: String
+    public let amount: String
+    public let coin: String
+    public let userEmail: String
+    public let memo: String?
+}
+
+public struct WithdrawResponse: Codable {
+    public let txHash: String
+    public let status: String
+}
+
+public struct WithdrawalStatus: Codable {
+    public let txHash: String
+    public let coin: String
+    public let status: String
+}

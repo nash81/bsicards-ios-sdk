@@ -434,3 +434,154 @@ handleAPICall(
 )
 ```
 
+## Wallet As A Service Examples
+
+### Swap
+
+#### Get Exchange Currencies
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let currencies = try await walletOps.getExchangeCurrencies()
+        print("Supported currencies: \(currencies.map { $0.code })")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Get Exchange Status
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let status = try await walletOps.getExchangeStatus(transactionId: "your-tx-id")
+        print("Status: \(status.status)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Estimate Exchange
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let estimate = try await walletOps.estimateExchange(from: "BTC", to: "USDT-TRC20", networkFrom: "BTC", networkTo: "TRC20", amount: 0.5)
+        print("Estimated amount: \(estimate.estimatedAmount)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Create Exchange
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let req = ExchangeCreateRequest(coinFrom: "BTC", coinTo: "USDT-TRC20", networkFrom: "BTC", networkTo: "TRC20", depositAmount: 0.5, withdrawal: "address", withdrawalExtraId: nil)
+        let resp = try await walletOps.createExchange(request: req)
+        print("Deposit address: \(resp.depositAddress)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+### Wallet
+
+#### Create Wallet Address
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let address = try await walletOps.createWalletAddress(userEmail: "user@example.com", coin: "BTC")
+        print("New address: \(address.address)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Get All Wallet Addresses
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let addresses = try await walletOps.getAllWalletAddresses(userEmail: "user@example.com")
+        print("Addresses: \(addresses.map { $0.address })")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Get Wallet Address
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let address = try await walletOps.getWalletAddress(uuid: "uuid", userEmail: "user@example.com")
+        print("Address: \(address.address)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Get Wallet Balance
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let balance = try await walletOps.getWalletBalance(uuid: "uuid", userEmail: "user@example.com")
+        print("Balances: \(balance.balances)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Get Withdrawal Fee
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let req = WithdrawalFeeRequest(uuid: "uuid", toAddress: "address", amount: "50.0", coin: "BTC", userEmail: "user@example.com")
+        let fee = try await walletOps.getWithdrawalFee(request: req)
+        print("Fee: \(fee.fee)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Withdraw
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let req = WithdrawRequest(uuid: "uuid", toAddress: "address", amount: "50.0", coin: "BTC", userEmail: "user@example.com", memo: nil)
+        let resp = try await walletOps.withdraw(request: req)
+        print("Tx hash: \(resp.txHash)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
+
+#### Get Withdrawal Status
+```swift
+Task {
+    do {
+        let walletOps = WalletServiceOperations(client: client)
+        let status = try await walletOps.getWithdrawalStatus(txHash: "tx-hash", coin: "BTC")
+        print("Status: \(status.status)")
+    } catch {
+        print("Error: \(error.localizedDescription)")
+    }
+}
+```
