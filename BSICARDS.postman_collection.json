@@ -603,7 +603,8 @@
           },
           "response": []
         }
-      ]
+      ],
+      "description": "THESE ARE SOON GOING TO BE DEPRECATED, PLEASE USE DIGITAL MASTER WALLET CARDS"
     },
     {
       "name": "VisaCard Issuance",
@@ -1356,7 +1357,8 @@
           },
           "response": []
         }
-      ]
+      ],
+      "description": "THESE ARE SOON GOING TO BE DEPRECATED, PLEASE USE DIGITAL VISA WALLET CARDS"
     },
     {
       "name": "Digital Master Wallet Cards",
@@ -3292,6 +3294,386 @@
       "description": "#### **You can use the sample data and test credentials for running on sandbox. These Visacards support 3DS auto approve, Gpay/Apple Pay**"
     },
     {
+      "name": "Reseller Digital Visa Wallet Cards",
+      "item": [
+        {
+          "name": "Create Virtual Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "publickey",
+                "value": "{{publickey}}",
+                "type": "text"
+              },
+              {
+                "key": "secretkey",
+                "value": "{{secretkey}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"useremail\" : \"test11@bsigroup.com\",\r\n    \"firstname\" : \"John\",\r\n    \"lastname\": \"Doe\"\r\n  \r\n    \r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}merchant/create-card",
+              "host": [
+                "{{url}}merchant"
+              ],
+              "path": [
+                "create-card"
+              ]
+            },
+            "description": "The Card issuance fee and minimum funding of $5 will be deducted from Digital visa issuing and Digital fund balance respectively"
+          },
+          "response": [
+            {
+              "name": "Create Virtual Card",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"useremail\" : \"test11@bsigroup.com\",\r\n    \"firstname\" : \"John\",\r\n    \"lastname\": \"Doe\"\r\n  \r\n    \r\n\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}digital-wallet-visa/create-card",
+                  "host": [
+                    "{{url}}digital-wallet-visa"
+                  ],
+                  "path": [
+                    "create-card"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 16:49:32 GMT"
+                },
+                {
+                  "key": "Server",
+                  "value": "Apache"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, private"
+                },
+                {
+                  "key": "Access-Control-Allow-Origin",
+                  "value": "*"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=5, max=100"
+                },
+                {
+                  "key": "Connection",
+                  "value": "Keep-Alive"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": 201,\n    \"status\": \"success\",\n    \"message\": \"Digital Wallet Visa card created successfully\",\n    \"data\": {\n        \"id\": \"cmmuuky2s003bc801b5888lzl\",\n        \"cardName\": \"John Doe\",\n        \"last4Digits\": \"8091\",\n        \"currencyCode\": \"USD\",\n        \"balance\": \"0.00\",\n        \"paymentSystem\": \"VISA\",\n        \"status\": \"ACTIVE\",\n        \"expiresAt\": \"02/29\",\n        \"createdAt\": \"2026-03-17T16:49:32.548Z\"\n    }\n}"
+            }
+          ]
+        },
+        {
+          "name": "Get All Digital Cards",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "publickey",
+                "value": "{{publickey}}",
+                "type": "text"
+              },
+              {
+                "key": "secretkey",
+                "value": "{{secretkey}}",
+                "type": "text"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"useremail\" : \"test11@bsigroup.com\"\r\n    \r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}merchant/getalldigitalvisa",
+              "host": [
+                "{{url}}merchant"
+              ],
+              "path": [
+                "getalldigitalvisa"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Digital Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "publickey",
+                "value": "{{publickey}}",
+                "type": "text"
+              },
+              {
+                "key": "secretkey",
+                "value": "{{secretkey}}",
+                "type": "text"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"useremail\" : \"test11@bsigroup.com\",\r\n    \"cardid\" : \"cmmuubi0l0039c801j9my06s7\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}merchant/getdigitalvisa",
+              "host": [
+                "{{url}}merchant"
+              ],
+              "path": [
+                "getdigitalvisa"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Fund Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "publickey",
+                "value": "{{publickey}}",
+                "type": "text"
+              },
+              {
+                "key": "secretkey",
+                "value": "{{secretkey}}",
+                "type": "text"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"useremail\" : \"test@bsigroup.tech\",\r\n    \"cardid\" : \"cmmuubi0l0039c801j9my06s7\",\r\n    \"amount\" : 50.00 // minimum $5.00\r\n    \r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}merchant/fund-card",
+              "host": [
+                "{{url}}merchant"
+              ],
+              "path": [
+                "fund-card"
+              ]
+            },
+            "description": "Minimium load amount is $5"
+          },
+          "response": []
+        },
+        {
+          "name": "Check DigitalWallet OTP",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "publickey",
+                "value": "{{publickey}}",
+                "type": "text"
+              },
+              {
+                "key": "secretkey",
+                "value": "{{secretkey}}",
+                "type": "text"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"useremail\" : \"test11@bsigroup.com\",\r\n    \"cardid\" : \"cmmuubi0l0039c801j9my06s7\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}merchant/get-otp",
+              "host": [
+                "{{url}}merchant"
+              ],
+              "path": [
+                "get-otp"
+              ]
+            },
+            "description": "When the user adds their card manually to Gpay/ApplePay for verification they need to select Email otp and this end points retrieves the OTP and you can then send an email within your application to the user or display on screen."
+          },
+          "response": []
+        },
+        {
+          "name": "Block Digital Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "publickey",
+                "value": "{{publickey}}",
+                "type": "text"
+              },
+              {
+                "key": "secretkey",
+                "value": "{{secretkey}}",
+                "type": "text"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"useremail\" : \"test11@bsigroup.com\",\r\n    \"cardid\" : \"cmmuubi0l0039c801j9my06s7\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}merchant/block-card",
+              "host": [
+                "{{url}}merchant"
+              ],
+              "path": [
+                "block-card"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Unblock Digital Card",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "publickey",
+                "value": "{{publickey}}",
+                "type": "text"
+              },
+              {
+                "key": "secretkey",
+                "value": "{{secretkey}}",
+                "type": "text"
+              },
+              {
+                "key": "user-agent",
+                "value": "Mozilla/5.0 (Linux; Android 10; SM-G996U Build/QP1A.190711.020; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Mobile Safari/537.36",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"useremail\" : \"test11@bsigroup.com\",\r\n    \"cardid\" : \"cmmuubi0l0039c801j9my06s7\"\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}merchant/unblock-card",
+              "host": [
+                "{{url}}merchant"
+              ],
+              "path": [
+                "unblock-card"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "#### **You can use the sample data and test credentials for running on sandbox. These Visacards support 3DS auto approve, Gpay/Apple Pay**"
+    },
+    {
       "name": "Reseller Digital Wallet Cards",
       "item": [
         {
@@ -3903,6 +4285,764 @@
             }
           },
           "response": []
+        }
+      ]
+    },
+    {
+      "name": "Wallet As A Service",
+      "item": [
+        {
+          "name": "Swap",
+          "item": [
+            {
+              "name": "Currencies",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}exchange/currencies",
+                  "host": [
+                    "{{url}}exchange"
+                  ],
+                  "path": [
+                    "currencies"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Status",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}exchange/status?transaction_id=c69c3819f5d5d9",
+                  "host": [
+                    "{{url}}exchange"
+                  ],
+                  "path": [
+                    "status"
+                  ],
+                  "query": [
+                    {
+                      "key": "transaction_id",
+                      "value": "c69c3819f5d5d9"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Estimate",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"from\" :\"BTC\",\r\n    \"to\" : \"USDT-TRC20\",\r\n\t\"network_from\" : \"BTC\",\r\n\t\"network_to\" : \"TRC20\",\r\n    \"amount\" : 0.5        \r\n\t\t\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}exchange/estimate",
+                  "host": [
+                    "{{url}}exchange"
+                  ],
+                  "path": [
+                    "estimate"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"coin_from\": \"BTC\",\r\n  \"coin_to\": \"USDT-TRC20\",\r\n  \"network_from\": \"BTC\",\r\n  \"network_to\": \"TRC20\",\r\n  \"deposit_amount\": 0.5,\r\n  \"withdrawal\": \"THUnQJKECXP82EjijVVHpUwFMd3Y3vGBQJ\",\r\n  \"withdrawal_extra_id\": \"NA\"// for those needing memo field.\r\n    \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}exchange/create",
+                  "host": [
+                    "{{url}}exchange"
+                  ],
+                  "path": [
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Wallet",
+          "item": [
+            {
+              "name": "Create Address",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"useremail\": \"user@example.com\",\n  \"coin\": \"PAXG\"\n}"
+                },
+                "url": {
+                  "raw": "{{url}}wallet/create-address",
+                  "host": [
+                    "{{url}}wallet"
+                  ],
+                  "path": [
+                    "create-address"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Create Address",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "publickey",
+                        "value": "{{publickey}}"
+                      },
+                      {
+                        "key": "secretkey",
+                        "value": "{{secretkey}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"useremail\": \"user@example.com\",\n  \"coin\": \"TRON\"\n}"
+                    },
+                    "url": {
+                      "raw": "{{url}}wallet/create-address",
+                      "host": [
+                        "{{url}}wallet"
+                      ],
+                      "path": [
+                        "create-address"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Date",
+                      "value": "Tue, 24 Mar 2026 04:36:41 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, private"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "*"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5, max=100"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "Keep-Alive"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"uuid\": \"7d8f937d-8e65-4eda-a48c-899b0b8e546e\",\n    \"address\": \"TPCCfpJXA556q7xHQeSpLRgSyZbzkjaQGq\",\n    \"coin\": \"TRON\",\n    \"useremail\": \"user@example.com\",\n    \"mnemonic\": null,\n    \"private_key\": \"C72C0C90C65F7E12AECE46391DE51CADAE1EC44781E5426DD38FC1C0981483F7\"\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get All Addresses",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"useremail\": \"user@example.com\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}wallet/addresses",
+                  "host": [
+                    "{{url}}wallet"
+                  ],
+                  "path": [
+                    "addresses"
+                  ],
+                  "query": [
+                    {
+                      "key": "useremail",
+                      "value": "",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Get All Addresses",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "publickey",
+                        "value": "{{publickey}}"
+                      },
+                      {
+                        "key": "secretkey",
+                        "value": "{{secretkey}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\r\n    \"useremail\": \"user@example.com\"\r\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}wallet/addresses",
+                      "host": [
+                        "{{url}}wallet"
+                      ],
+                      "path": [
+                        "addresses"
+                      ],
+                      "query": [
+                        {
+                          "key": "useremail",
+                          "value": "",
+                          "disabled": true
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Date",
+                      "value": "Tue, 24 Mar 2026 04:32:11 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, private"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "*"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5, max=100"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "Keep-Alive"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "[\n    {\n        \"uuid\": \"222c7013-e941-4227-9806-7f83cca0db65\",\n        \"address\": \"0x07A9eFb9FE6851e08EE810bC51BE1979d9732057\",\n        \"coin\": \"USDT-BEP20\",\n        \"created_at\": \"2026-03-23T18:44:28.000000Z\"\n    },\n    {\n        \"uuid\": \"36056904-224c-43f0-99bc-fe0252b81531\",\n        \"address\": \"0xEc0b469A3ee26E240bE647329eE4f285fD5EbeDC\",\n        \"coin\": \"USDC-POLYGON\",\n        \"created_at\": \"2026-03-23T20:38:45.000000Z\"\n    },\n    {\n        \"uuid\": \"42c629c5-f43d-44e9-9c29-e2293aa95d6d\",\n        \"address\": \"rK5FkXofMSK1nhQxWQuiqbVxuis5344U73\",\n        \"coin\": \"XRP\",\n        \"created_at\": \"2026-03-24T04:30:54.000000Z\"\n    },\n    {\n        \"uuid\": \"6ebd077c-787e-4cb1-9d6a-fc631363b3a3\",\n        \"address\": \"0x6836a31589a76B9d4a3498E36739CF7A6adD1Aac\",\n        \"coin\": \"USDT-BEP20\",\n        \"created_at\": \"2026-03-23T20:46:25.000000Z\"\n    },\n    {\n        \"uuid\": \"7d2f9863-2989-4700-a081-0af49875b0f1\",\n        \"address\": \"0x44caaF90FA59FA8cb412Cc34cd1717c3a5DD894a\",\n        \"coin\": \"USDT-BEP20\",\n        \"created_at\": \"2026-03-23T19:18:36.000000Z\"\n    },\n    {\n        \"uuid\": \"a2bcfbfc-4d93-4bd8-af40-9917ab68ee6b\",\n        \"address\": \"15oTnYC72gb5i6B8qRz4VdCSf9FcHJaLaQ\",\n        \"coin\": \"BTC\",\n        \"created_at\": \"2026-03-23T19:48:13.000000Z\"\n    },\n    {\n        \"uuid\": \"bfaae40a-dda4-4f08-a14d-697daab5c2a8\",\n        \"address\": \"ARN1kQtNQE1Mab1866BwkEFBvLkY6Crxy2YVa5Yz8WER\",\n        \"coin\": \"SOL\",\n        \"created_at\": \"2026-03-24T04:30:38.000000Z\"\n    },\n    {\n        \"uuid\": \"c27319c6-7a5d-4af3-a2c4-af9bb3fb5462\",\n        \"address\": \"0xCfe3Ae2236277AaE94b5eDc54bFF72F7574589e0\",\n        \"coin\": \"USDC-POLYGON\",\n        \"created_at\": \"2026-03-23T20:28:22.000000Z\"\n    },\n    {\n        \"uuid\": \"c439c4ca-0eb0-4132-9dd2-3438dd13981b\",\n        \"address\": \"0x4f2c1a129CE54254B06123e2EB2f94ed183572B6\",\n        \"coin\": \"DAI\",\n        \"created_at\": \"2026-03-24T04:27:44.000000Z\"\n    },\n    {\n        \"uuid\": \"c5e5ed56-ed90-444c-b3e4-5d596182aab0\",\n        \"address\": \"0x825208105117c3440686CE9a8741D7AE9a20279d\",\n        \"coin\": \"BNB\",\n        \"created_at\": \"2026-03-24T04:31:05.000000Z\"\n    },\n    {\n        \"uuid\": \"cbb186c7-c816-47b2-9dcc-0ec096345390\",\n        \"address\": \"TBq7pXD74HLKdN7k7r8TG9RU8zhyJWkrpG\",\n        \"coin\": \"USDT-TRC20\",\n        \"created_at\": \"2026-03-23T20:17:29.000000Z\"\n    },\n    {\n        \"uuid\": \"d29d2b43-c832-41bb-ba0c-d253d743d968\",\n        \"address\": \"TPNGpTowzSGxWnrsyeWSA7kAAixJi7598D\",\n        \"coin\": \"TRON\",\n        \"created_at\": \"2026-03-24T04:31:15.000000Z\"\n    },\n    {\n        \"uuid\": \"eae21d1f-8eb7-446c-8453-d59a6b11cb33\",\n        \"address\": \"TAfH3uCEqRsqfHDTRVnyovCd6NhaXN9nwT\",\n        \"coin\": \"TRON\",\n        \"created_at\": \"2026-03-23T20:17:37.000000Z\"\n    },\n    {\n        \"uuid\": \"ec2a1c55-58e8-4e16-8eae-e38e0b820598\",\n        \"address\": \"rhgNXRsKA3ZvCEybpBkD4GwHpPQwq5UBwQ\",\n        \"coin\": \"XRP\",\n        \"created_at\": \"2026-03-23T20:21:13.000000Z\"\n    },\n    {\n        \"uuid\": \"fcadedaf-9b25-4fb2-bbad-4e1e84604a35\",\n        \"address\": \"0x5CF599929a1D1d5dFcdAab429628f4E95373372c\",\n        \"coin\": \"USDT-BEP20\",\n        \"created_at\": \"2026-03-23T18:45:08.000000Z\"\n    }\n]"
+                }
+              ]
+            },
+            {
+              "name": "Get Specific Address",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}wallet/address/222c7013-e941-4227-9806-7f83cca0db65?useremail=user@example.com",
+                  "host": [
+                    "{{url}}wallet"
+                  ],
+                  "path": [
+                    "address",
+                    "222c7013-e941-4227-9806-7f83cca0db65"
+                  ],
+                  "query": [
+                    {
+                      "key": "useremail",
+                      "value": "user@example.com"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Get Specific Address",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "publickey",
+                        "value": "{{publickey}}"
+                      },
+                      {
+                        "key": "secretkey",
+                        "value": "{{secretkey}}"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{url}}wallet/address/222c7013-e941-4227-9806-7f83cca0db65?useremail=user@example.com",
+                      "host": [
+                        "{{url}}wallet"
+                      ],
+                      "path": [
+                        "address",
+                        "222c7013-e941-4227-9806-7f83cca0db65"
+                      ],
+                      "query": [
+                        {
+                          "key": "useremail",
+                          "value": "user@example.com"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Date",
+                      "value": "Tue, 24 Mar 2026 04:35:44 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, private"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "*"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5, max=100"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "Keep-Alive"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"uuid\": \"222c7013-e941-4227-9806-7f83cca0db65\",\n    \"address\": \"0x07A9eFb9FE6851e08EE810bC51BE1979d9732057\",\n    \"coin\": \"USDT-BEP20\",\n    \"created_at\": \"2026-03-23T18:44:28.000000Z\",\n    \"balances\": {\n        \"USDT-BEP20\": \"0\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Get Balance",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}wallet/balance?uuid=b7517c4e-27e7-4a54-87c4-d27514566646&useremail=user@example.com",
+                  "host": [
+                    "{{url}}wallet"
+                  ],
+                  "path": [
+                    "balance"
+                  ],
+                  "query": [
+                    {
+                      "key": "uuid",
+                      "value": "b7517c4e-27e7-4a54-87c4-d27514566646"
+                    },
+                    {
+                      "key": "useremail",
+                      "value": "user@example.com"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "Get Balance",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "publickey",
+                        "value": "{{publickey}}"
+                      },
+                      {
+                        "key": "secretkey",
+                        "value": "{{secretkey}}"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{url}}wallet/balance?uuid=bfaae40a-dda4-4f08-a14d-697daab5c2a8&useremail=user@example.com",
+                      "host": [
+                        "{{url}}wallet"
+                      ],
+                      "path": [
+                        "balance"
+                      ],
+                      "query": [
+                        {
+                          "key": "uuid",
+                          "value": "bfaae40a-dda4-4f08-a14d-697daab5c2a8"
+                        },
+                        {
+                          "key": "useremail",
+                          "value": "user@example.com"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Date",
+                      "value": "Tue, 24 Mar 2026 04:35:30 GMT"
+                    },
+                    {
+                      "key": "Server",
+                      "value": "Apache"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, private"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "*"
+                    },
+                    {
+                      "key": "Keep-Alive",
+                      "value": "timeout=5, max=100"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "Keep-Alive"
+                    },
+                    {
+                      "key": "Transfer-Encoding",
+                      "value": "chunked"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json",
+                      "description": "",
+                      "type": "text"
+                    }
+                  ],
+                  "cookie": [
+                    {
+                      "expires": "Invalid Date",
+                      "domain": "",
+                      "path": ""
+                    }
+                  ],
+                  "body": "{\n    \"balances\": {\n        \"SOL\": \"0\"\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "Withdrawal Fee",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"7d8f937d-8e65-4eda-a48c-899b0b8e546e\",\n  \"to_address\": \"TPNGpTowzSGxWnrsyeWSA7kAAixJi7598D\",\n  \"amount\": \"50.0\",\n  \"coin\": \"TRON\",\n  \"useremail\": \"user@example.com\"\n}"
+                },
+                "url": {
+                  "raw": "{{url}}wallet/withdrawal-fee",
+                  "host": [
+                    "{{url}}wallet"
+                  ],
+                  "path": [
+                    "withdrawal-fee"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Withdraw",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uuid\": \"738ca1b9-391f-4d99-b691-f20974be0ad1\",\n  \"to_address\": \"TPNGpTowzSGxWnrsyeWSA7kAAixJi7598D\",\n  \"amount\": \"50.0\",\n  \"coin\": \"TRON\",\n  \"useremail\": \"user@example.com\",\n  \"memo\": \"optional string\"  // For XRP only\n}"
+                },
+                "url": {
+                  "raw": "{{url}}wallet/withdraw",
+                  "host": [
+                    "{{url}}wallet"
+                  ],
+                  "path": [
+                    "withdraw"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Withdraw-Status",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "publickey",
+                    "value": "{{publickey}}",
+                    "type": "text"
+                  },
+                  {
+                    "key": "secretkey",
+                    "value": "{{secretkey}}",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"tx_hash\" : \"0x....\",\r\n    \"coin\": \"USDT-BEP20\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{url}}wallet/withdrawal-status",
+                  "host": [
+                    "{{url}}wallet"
+                  ],
+                  "path": [
+                    "withdrawal-status"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     }
